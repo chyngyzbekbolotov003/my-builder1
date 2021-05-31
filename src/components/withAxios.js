@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Loading from "../Loading/Loading";
 import Modal from "./UI/Modal/Modal";
 
 const withAxios = (WrappedComponent, axios) => {
@@ -34,11 +35,12 @@ const withAxios = (WrappedComponent, axios) => {
       <>
         <Modal show={error} hideCallback={hideModal}>
           {error ? error.message : "Unknown error"}
+          <Loading />
         </Modal>
         <WrappedComponent {...props} />
       </>
     );
-  };
-};
+  }
+}
 
 export default withAxios;
