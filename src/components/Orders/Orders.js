@@ -1,10 +1,11 @@
+import axios from "../../axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { load } from "../../store/actions/orders";
 import Order from "./Order/Order";
-import withAxios from "../withAxios";
-import axios from "../../axios";
 import classes from "./Orders.module.css";
+import withAxios from "../withAxios";
+import Loading from "../../Loading/Loading";
 
 const Orders = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Orders = () => {
 
   return (
     <div className={classes.Orders}>
-      {results}
+      {results.length > 0 ? results : <Loading />}
     </div>
   );
 }

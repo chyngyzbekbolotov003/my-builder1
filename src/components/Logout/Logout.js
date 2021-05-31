@@ -1,16 +1,14 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react"
 import { logout } from "../../store/actions/auth";
+import { useDispatch } from "react-redux";
 
-const Logout = ({ history }) => {
+export default function Logout({ history }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(logout());
+    logout(dispatch);
     history.replace("/");
   }, [dispatch, history]);
 
   return null;
 }
- 
-export default Logout;

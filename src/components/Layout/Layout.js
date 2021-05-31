@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Toolbar from "./Toolbar/Toolbar";
-import Drawer from "./Drawer/Drawer";
-
+import Drawer from "../Drawer/Drawer";
+import Toolbar from "../Toolbar.js/Toolbar";
 import classes from "./Layout.module.css";
 
 const Layout = ({ children }) => {
@@ -11,11 +10,9 @@ const Layout = ({ children }) => {
     <div className={classes.Layout}>
       <Toolbar openDrawer={() => setDrawerOpen(true)} />
       <Drawer open={drawerOpen} closeDrawer={() => setDrawerOpen(false)} />
-      <main>
-        {children}
-      </main>
+      {children}
     </div>
   );
-}
+};
 
 export default Layout;

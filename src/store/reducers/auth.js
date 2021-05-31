@@ -1,39 +1,40 @@
-import { AUTH_FAIL, AUTH_SUCCESS, AUTH_START, AUTH_LOGOUT } from "../actions/types";
+import * as types from "../actions/types";
 
 const initialState = {
-  id: null,
   token: null,
+  id: null,
   error: null,
-  loading: false
+  loading: false,
 };
 
-const auth = (state = initialState, action) => {
+export default function auth(state = initialState, action) {
+  const newState = { ...state };
+
   switch (action.type) {
-    case AUTH_START:
-      return {
-        ...initialState,
-        loading: true
-      };
-    case AUTH_SUCCESS:
-      return {
-        token: action.token,
-        id: action.id,
-        loading: false
-      };
-    case AUTH_FAIL:
-      return {
-        error: action.error.message,
-        loading: false
-      };
-    case AUTH_LOGOUT:
-      return {
-        token: null,
-        id: null
-      };
-  
+    case types.AUTH_START:
+      newState.token = null;
+      newState.id = null;
+      newState.error = null;
+      newState.loading = true;
+      return newState;
+
+    case types.AUTH_SUCCESS:
+      newState.token = action.token;
+      newState.id = action.id;
+      newState.loading = false;
+      return newState;
+
+    case types.AUTH_FAIL:
+      newState.error = action.error;
+      newState.loading = false;
+      return newState;
+
+    case types.AUTH_LOGOUT:
+      newState.token = null;
+      newState.id = null;
+      return newState;
+
     default:
-      return state;
+      return newState;
   }
 }
-
-export default auth;

@@ -1,0 +1,14 @@
+.CoffeControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.CoffeControl .ingredient div {
+  position: static;
+  margin: 0 0.5rem;
+}
+.CoffeControl div button:hover {
+  background-color: rgb(154, 211, 62);
+  color: white;
+}

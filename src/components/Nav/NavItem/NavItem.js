@@ -1,12 +1,14 @@
-import { NavLink } from "react-router-dom";
 import classes from "./NavItem.module.css";
+import { NavLink } from "react-router-dom";
 
-const NavItem = ({ url, children, exact }) => {
+const NavItem = ({ url, children, exact, active }) => {
   return (
-    <li className={classes.NavItem}>
-      <NavLink to={url} activeClassName={classes.active} exact={exact}>{children}</NavLink>
-    </li>
+    <div className={classes.NavItem}>
+      <NavLink to={url} activeClassName={classes.active} exact={exact}>
+        {children}
+      </NavLink>
+    </div>
   );
-}
+};
 
 export default NavItem;
